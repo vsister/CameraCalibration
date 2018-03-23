@@ -4,12 +4,21 @@
 #include "Calibration.h"
 #include "UI.h"
 
-void UserInterface::vectorOfpictures(int i, cv::Mat& pictures, std::string ending) {
+UserInterface::UserInterface(int number, std::string ending) 
+	:number(number),
+	ending(ending)
+{
+};
 
+
+ std::vector<cv::Mat> UserInterface::getPictures(){
 	std::string picname = "";
-		char c = char(i) + 65;
+	std::vector<cv::Mat> pictures(number);
+	char c = 'A';
+		for (int k = 0; k < number; ++k) {
 		picname = c + ending;
-		pictures = cv::imread(picname, cv::IMREAD_GRAYSCALE);
-
-	
+		++c;
+		pictures[k] = cv::imread(picname, cv::IMREAD_GRAYSCALE);
+	}
+		return pictures;
 }

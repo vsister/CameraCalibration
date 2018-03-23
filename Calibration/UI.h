@@ -6,7 +6,11 @@
 class UserInterface
 {
 public:
-	static void vectorOfpictures(int i, cv::Mat& pictures, std::string ending = ".jpg");
+	int number; 
+	std::string ending;
+	UserInterface(int number, std::string ending);
+	std::vector<cv::Mat> getPictures();
+   
 };
 
 
