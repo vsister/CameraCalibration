@@ -1,22 +1,19 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
-
-#include "Calibration.h"
 #include "UI.h"
 
 UserInterface::UserInterface(int number, std::string ending) 
-	:number(number),
-	ending(ending)
+	:_number(number),
+	_ending(ending)
 {
 };
 
-
  std::vector<cv::Mat> UserInterface::getPictures(){
 	std::string picname = "";
-	std::vector<cv::Mat> pictures(number);
+	std::vector<cv::Mat> pictures(_number);
 	char c = 'A';
-		for (int k = 0; k < number; ++k) {
-		picname = c + ending;
+		for (int k = 0; k < _number; ++k) {
+		picname = c + _ending;
 		++c;
 		pictures[k] = cv::imread(picname, cv::IMREAD_GRAYSCALE);
 	}
